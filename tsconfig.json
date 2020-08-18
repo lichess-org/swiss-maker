@@ -4,6 +4,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "target": "es6",
+    "lib": ["es2019"],
     "noImplicitAny": true,
     "moduleResolution": "node",
     "sourceMap": true,
