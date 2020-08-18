@@ -16,7 +16,7 @@ i.e. it won't create a tournament that already exists.
 [Generate an OAuth token](https://lichess.org/account/oauth/token/create?scopes[]=tournament:write&description=Lichess+Swiss+maker)
 and use it in place of `YourOauthToken` in the following commands.
 
-Edit the configuration directly from `src/index.ts`.
+Edit the configuration `src/config.ts`.
 
 ### Dev
 
