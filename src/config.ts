@@ -9,10 +9,11 @@ export const config = {
             clock: [3, 0],
             name: (_conf: any) => `Daily SuperBlitz`,
             description: (_conf: any) => '',
-            nbRounds: 11,
+            nbRounds: 15,
             variant: 'standard',
             rated: true,
-            chatFor: 30
+            chatFor: 30,
+            'conditions.nbRatedGame.nb': 12
         },
         {
             time: '19:00',
@@ -22,7 +23,8 @@ export const config = {
             nbRounds: 11,
             variant: 'standard',
             rated: true,
-            chatFor: 30
+            chatFor: 30,
+            'conditions.nbRatedGame.nb': 12
         },
         {
             time: '21:00',
@@ -32,7 +34,8 @@ export const config = {
             nbRounds: 7,
             variant: 'standard',
             rated: true,
-            chatFor: 30
+            chatFor: 30,
+            'conditions.nbRatedGame.nb': 8
         }
     ],
     oauthToken: process.env['OAUTH_TOKEN']
