@@ -39,8 +39,8 @@ async function createTournament(tour: any): Promise<any> {
         headers: { Authorization: `Bearer ${config.oauthToken}` }
     });
     if (response.status != 200) {
-        const error = await response.json();
-        console.log(error);
+        const error = await response.text();
+        console.error(response.status, error);
     }
     await new Promise(r => setTimeout(r, 500));
 }
