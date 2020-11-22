@@ -9,7 +9,7 @@ export const config = {
     server: 'https://lichess.org',
     /* server: 'http://l.org', */
     team: 'lichess-swiss',
-    daysInAdvance: 14,
+    daysInAdvance: 21,
     dryRun: false,
     oauthToken: process.env['OAUTH_TOKEN'],
     dailyTournaments: [
@@ -20,7 +20,7 @@ export const config = {
             name: (_conf: any) => `Daily Classical`,
             nbRounds: 5,
             'conditions.nbRatedGame.nb': 5,
-            description: (_conf: any) => 'Games can take up to one hour, so you will have to wait for pairings. We also offer [faster-paced swissed tournaments](https://lichess.org/team/lichess-swiss/tournaments).'
+            description: (_conf: any) => 'Games can take up to one hour, so you will have to wait for pairings. We also offer [faster-paced swiss tournaments](https://lichess.org/team/lichess-swiss/tournaments).'
         },
         {
             ...defaults,
