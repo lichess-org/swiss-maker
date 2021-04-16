@@ -18,16 +18,7 @@ and use it in place of `YourOauthToken` in the following commands.
 
 Edit the configuration in `src/config.ts`.
 
-### Dev
-
 ```
 yarn install
 OAUTH_TOKEN='YourOauthToken' yarn dev
-```
-
-### Prod
-
-```
-yarn build
-OAUTH_TOKEN='YourOauthToken' yarn start
 ```
