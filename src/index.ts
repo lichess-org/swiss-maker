@@ -27,8 +27,8 @@ const looksLike = (existing: any, candidate: any) =>
   existing.clock.limit / 60 == candidate.clock[0] &&
   existing.clock.increment == candidate.clock[1];
 
-async function getLatestTournaments() {
-  const response = await fetch(`${config.server}/api/team/${config.team}/swiss?max=100`);
+async function getLatestTournaments(nb: number) {
+  const response = await fetch(`${config.server}/api/team/${config.team}/swiss?max=${nb}`);
   const body = await response.text();
   return body
     .split('\n')
@@ -52,7 +52,8 @@ async function createTournament(tour: any): Promise<any> {
 }
 
 async function main() {
-  const existing = await getLatestTournaments();
+  const existing = await getLatestTournaments(200);
+  console.log(`Found ${existing.length} tournaments`);
   const missing = candidates.filter(c => !existing.some(e => looksLike(e, c)));
   const posts = missing.map(m => ({
     ...m,
@@ -63,16 +64,14 @@ async function main() {
     startsAt: m.startsAt.getTime(),
   }));
   console.log(`Creating ${posts.length} tournaments`);
-  posts.forEach(p => console.log(p));
-  if (!config.dryRun)
-    await posts.reduce(
-      (seq, n) =>
-        seq.then(() => {
-          console.log(`${n.startsAt} ${n.name}`);
-          return createTournament(n);
-        }),
-      Promise.resolve()
-    );
+  await posts.reduce(
+    (seq, n) =>
+      seq.then(() => {
+        console.log(`${new Date(n.startsAt)} ${n.name}`);
+        if (!config.dryRun) return createTournament(n);
+      }),
+    Promise.resolve()
+  );
 }
 
 main();
